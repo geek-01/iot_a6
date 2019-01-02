@@ -1,0 +1,45 @@
+Tools -> Board Manager-> ESP8266 by ESP8266 Community [Version 2.3.0] Install
+
+Selecting and Installation of NodeMCU module i
+Tools -> Board -> Board manager -> Filter (ESP8266 Community Version) and Install
+
+Adding libraries for Adafruit MQTT [0.17] and DHT11
+Sketch -> Include Libraries-> Manage libraries Adding Adafruit MQTT
+
+Load the program on to the IDE
+• File -> Open -> file.ino
+• Verify / Compile the code [Ctrl+R] • Sketch -> Verify -> Verify/Compile • Upload if no errors [Ctrl+U]
+• Sketch -> Upload
+
+
+#include <ESP8266WiFi.h>
+#include "Adafruit_MQTT.h" #include "Adafruit_MQTT_Client.h" #include "DHT.h"
+// Wi-Fi Access Point
+#define WLAN_SSID
+#define WLAN_PASS
+Adafruit.io Setup
+
+#define AIO_SERVER "io.adafruit.com"
+
+#define AIO_SERVERPORT 1883 
+#define AIO_USERNAME 
+#define AIO_KEY
+
+Adafruit_MQTT_Subscribe Relay = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/FAN");
+Adafruit_MQTT_Subscribe Radio = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/LIGHT");
+Adafruit_MQTT_Subscribe Charger = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/charger");
+Adafruit_MQTT_Subscribe Tv = Adafruit_MQTT_Subscribe(&mqtt, AIO_USERNAME "/feeds/tv");
+Adafruit_MQTT_Publish TempandHumid = Adafruit_MQTT_Publish(&mqtt, AIO_USERNAME "/feeds/temperaturehumi");
+
+Step 4: Dashboard Setup
+Signup at https://io.adafruit.com/
+Login
+Create a new dash board with the following blocks/feeds with block type as following
+
+Step 5: Program parameter setup for NodeMCU configuration with Dashboard
+
+Step 6: Execution
+• Compile and upload the program from arduino IDE to NodeMCU
+• Ensure the Internet connection parameters are satisfied for NodeMCU to hook on to the Dashboard Website
+• Use the URL of the dashboard www.io.Adafruit.com to load the dashboard and operate on the feeds created.
+
